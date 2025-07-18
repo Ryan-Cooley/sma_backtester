@@ -1,7 +1,6 @@
 # 📈 SMA Crossover Backtester
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
 
 A comprehensive Python backtesting engine for Simple Moving Average (SMA) crossover strategies. Features dual data sources, interactive parameter tuning, advanced visualizations, and systematic optimization capabilities.
