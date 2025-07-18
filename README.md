@@ -378,14 +378,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **matplotlib/seaborn**: Visualization capabilities
 - **ipywidgets**: Interactive notebook components
 
-## 📞 Support
-
-For questions, issues, or contributions:
-
-- 📧 Email: [your-email@domain.com]
-- 🐛 Issues: [GitHub Issues](https://github.com/username/SMA_Backtester/issues)
-- 📖 Documentation: [Wiki](https://github.com/username/SMA_Backtester/wiki)
-
----
 
 **Disclaimer**: This software is for educational and research purposes only. Past performance does not guarantee future results. Always conduct thorough testing before using any trading strategy with real money. 
