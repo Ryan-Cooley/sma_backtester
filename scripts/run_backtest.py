@@ -82,6 +82,29 @@ def run_backtest(
     total_return = final_value - initial_cash
     num_trades = abs(df['signal'].diff()).sum()
 
+    # Calculate Win Rate
+    # Find trade entry/exit points
+    trade_entries = df['signal'].diff() != 0
+    trade_returns = []
+    in_trade = False
+    entry_price = 0
+    for idx, row in df.iterrows():
+        if row['signal'] != 0 and not in_trade:
+            entry_price = row['Close']
+            in_trade = True
+        elif row['signal'] == 0 and in_trade:
+            exit_price = row['Close']
+            trade_returns.append(exit_price - entry_price if entry_price != 0 else 0)
+            in_trade = False
+    # If still in trade at end, close at last price
+    if in_trade:
+        exit_price = df['Close'].iloc[-1]
+        trade_returns.append(exit_price - entry_price if entry_price != 0 else 0)
+    if trade_returns:
+        win_rate = sum([tr > 0 for tr in trade_returns]) / len(trade_returns)
+    else:
+        win_rate = float('nan')
+
     if verbose:
         print("Results:")
         print(f"  Cumulative Return: {cum_ret:.2%}")
@@ -90,6 +113,7 @@ def run_backtest(
         print(f"  Final Portfolio:   ${final_value:,.0f}")
         print(f"  Total Return:      ${total_return:,.0f}")
         print(f"  Number of Trades:  {num_trades}")
+        print(f"  Win Rate:          {win_rate:.2%}")
         print(f"  Data Points:       {len(df)}")
 
     return {
@@ -106,6 +130,7 @@ def run_backtest(
         'final_value': final_value,
         'total_return': total_return,
         'num_trades': num_trades,
+        'win_rate': win_rate,
         'data_points': len(df),
     }
 

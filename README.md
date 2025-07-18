@@ -44,11 +44,11 @@ pip install -e .
 ### Basic Usage
 
 ```python
-from src.data_loader import fetch_data
-from src.indicators import compute_sma
-from src.signals import generate_signals
-from src.backtester import backtest_signals
-from src.metrics import compute_cumulative_return, compute_sharpe_ratio, compute_max_drawdown
+from sma_backtester.data_loader import fetch_data
+from sma_backtester.indicators import compute_sma
+from sma_backtester.signals import generate_signals
+from sma_backtester.backtester import backtest_signals
+from sma_backtester.metrics import compute_cumulative_return, compute_sharpe_ratio, compute_max_drawdown
 
 # Fetch data
 df = fetch_data('SPY', '2015-01-01', '2024-01-01')
@@ -73,6 +73,18 @@ print(f'Sharpe Ratio: {sharpe:.2f}')
 print(f'Max Drawdown: {max_dd:.2%}')
 ```
 
+### Sample Performance (SPY 2015-2024)
+
+| Metric            | Value    |
+|-------------------|----------|
+| Cumulative Return | 0.00%    |
+| Sharpe Ratio      | 0.04     |
+| Maximum Drawdown  | -0.03%   |
+| Number of Trades  | 92       |
+| Win Rate          | 54.55%   |
+
+*Results may vary based on market conditions and parameters*
+
 ## 📊 Advanced Visualizations
 
 ### Comprehensive Dashboard
@@ -82,7 +94,7 @@ The SMA Backtester generates professional-grade visualizations that provide deep
 ![SPY 20/50 SMA Dashboard](images/sma_dashboard_SPY_20_50.png)
 
 ```python
-from src.metrics import plot_comprehensive_dashboard
+from sma_backtester.metrics import plot_comprehensive_dashboard
 
 # Create a 4-panel dashboard
 plot_comprehensive_dashboard(df, results['portfolio_value'], fast_sma=20, slow_sma=50)
@@ -107,7 +119,7 @@ Here are sample backtest results for different tickers and parameters:
 ### Additional Plots
 
 ```python
-from src.metrics import (
+from sma_backtester.metrics import (
     plot_equity_curve, 
     plot_price_signals, 
     plot_drawdown, 
@@ -335,13 +347,13 @@ python -m pytest tests/ --cov=src --cov-report=html
 
 ### Sample Performance (SPY 2015-2024)
 
-| Metric | Value |
-|--------|-------|
-| Cumulative Return | 8.2% |
-| Sharpe Ratio | 1.1 |
-| Maximum Drawdown | -12.3% |
-| Number of Trades | 45 |
-| Win Rate | 52% |
+| Metric            | Value    |
+|-------------------|----------|
+| Cumulative Return | 0.00%    |
+| Sharpe Ratio      | 0.04     |
+| Maximum Drawdown  | -0.03%   |
+| Number of Trades  | 92       |
+| Win Rate          | 54.55%   |
 
 *Results may vary based on market conditions and parameters*
 
