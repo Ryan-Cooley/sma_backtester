@@ -259,6 +259,22 @@ Test Results: 6/6 tests passed
 🎉 All tests passed! The SMA Backtester is working correctly.
 ```
 
+### Development Testing
+
+```bash
+# Run all tests
+python -m pytest tests/
+
+# Run with coverage
+python -m pytest tests/ --cov=src --cov-report=html
+
+# Run linting
+flake8 src/ tests/
+
+# Run type checking
+mypy src/
+```
+
 ## 🏗️ Architecture
 
 ```
@@ -331,32 +347,6 @@ df['SMA_fast'] = compute_sma(df, 10)   # 10-day SMA
 df['SMA_slow'] = compute_sma(df, 30)   # 30-day SMA
 ```
 
-## 🧪 Testing
-
-Run the test suite:
-
-```bash
-# Run all tests
-python -m pytest tests/
-
-# Run with coverage
-python -m pytest tests/ --cov=src --cov-report=html
-```
-
-## 📊 Example Results
-
-### Sample Performance (SPY 2015-2024)
-
-| Metric            | Value    |
-|-------------------|----------|
-| Cumulative Return | 0.00%    |
-| Sharpe Ratio      | 0.04     |
-| Maximum Drawdown  | -0.03%   |
-| Number of Trades  | 92       |
-| Win Rate          | 54.55%   |
-
-*Results may vary based on market conditions and parameters*
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -388,6 +378,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **pandas-datareader**: Alternative data sources
 - **matplotlib/seaborn**: Visualization capabilities
 - **ipywidgets**: Interactive notebook components
-
 
 **Disclaimer**: This software is for educational and research purposes only. Past performance does not guarantee future results. Always conduct thorough testing before using any trading strategy with real money. 
